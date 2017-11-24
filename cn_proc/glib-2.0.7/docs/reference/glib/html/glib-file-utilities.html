@@ -1,0 +1,2550 @@
+<HTML
+><HEAD
+><TITLE
+>File Utilities</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE="GLib Reference Manual"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="GLib Utilities"
+HREF="glib-utilities.html"><LINK
+REL="PREVIOUS"
+TITLE="Spawning Processes"
+HREF="glib-spawning-processes.html"><LINK
+REL="NEXT"
+TITLE="Shell-related Utilities"
+HREF="glib-shell-related-utilities.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+BGCOLOR="#000000"
+CELLPADDING="1"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="4"
+ALIGN="center"
+><FONT
+COLOR="#FFFFFF"
+SIZE="5"
+>GLib Reference Manual</FONT
+></TH
+></TR
+><TR
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="left"
+><A
+HREF="glib-spawning-processes.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>&#60;&#60;&#60; Previous Page</B
+></FONT
+></A
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="center"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+><A
+HREF="index.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Home</B
+></FONT
+></A
+></B
+></FONT
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="center"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+><A
+HREF="glib-utilities.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Up</B
+></FONT
+></A
+></B
+></FONT
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="right"
+><A
+HREF="glib-shell-related-utilities.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Next Page &#62;&#62;&#62;</B
+></FONT
+></A
+></TD
+></TR
+></TABLE
+></DIV
+><H1
+><A
+NAME="GLIB-FILE-UTILITIES">File Utilities</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN21423"
+></A
+><H2
+>Name</H2
+>File Utilities&nbsp;--&nbsp;various file-related functions.</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN21426"><H2
+>Synopsis</H2
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="SYNOPSIS"
+>&#13;#include &lt;glib.h&gt;
+
+
+enum        <A
+HREF="glib-file-utilities.html#GFILEERROR"
+>GFileError</A
+>;
+#define     <A
+HREF="glib-file-utilities.html#G-FILE-ERROR-CAPS"
+>G_FILE_ERROR</A
+>
+enum        <A
+HREF="glib-file-utilities.html#GFILETEST"
+>GFileTest</A
+>;
+<A
+HREF="glib-file-utilities.html#GFILEERROR"
+>GFileError</A
+>  <A
+HREF="glib-file-utilities.html#G-FILE-ERROR-FROM-ERRNO"
+>g_file_error_from_errno</A
+>         (<A
+HREF="glib-basic-types.html#GINT"
+>gint</A
+> err_no);
+<A
+HREF="glib-basic-types.html#GBOOLEAN"
+>gboolean</A
+>    <A
+HREF="glib-file-utilities.html#G-FILE-GET-CONTENTS"
+>g_file_get_contents</A
+>             (const <A
+HREF="glib-basic-types.html#GCHAR"
+>gchar</A
+> *filename,
+                                             <A
+HREF="glib-basic-types.html#GCHAR"
+>gchar</A
+> **contents,
+                                             <A
+HREF="glib-basic-types.html#GSIZE"
+>gsize</A
+> *length,
+                                             <A
+HREF="glib-error-reporting.html#GERROR"
+>GError</A
+> **error);
+<A
+HREF="glib-basic-types.html#GBOOLEAN"
+>gboolean</A
+>    <A
+HREF="glib-file-utilities.html#G-FILE-TEST"
+>g_file_test</A
+>                     (const <A
+HREF="glib-basic-types.html#GCHAR"
+>gchar</A
+> *filename,
+                                             <A
+HREF="glib-file-utilities.html#GFILETEST"
+>GFileTest</A
+> test);
+int         <A
+HREF="glib-file-utilities.html#G-MKSTEMP"
+>g_mkstemp</A
+>                       (char *tmpl);
+int         <A
+HREF="glib-file-utilities.html#G-FILE-OPEN-TMP"
+>g_file_open_tmp</A
+>                 (const char *tmpl,
+                                             char **name_used,
+                                             <A
+HREF="glib-error-reporting.html#GERROR"
+>GError</A
+> **error);
+
+struct      <A
+HREF="glib-file-utilities.html#GDIR"
+>GDir</A
+>;
+<A
+HREF="glib-file-utilities.html#GDIR"
+>GDir</A
+>*       <A
+HREF="glib-file-utilities.html#G-DIR-OPEN"
+>g_dir_open</A
+>                      (const <A
+HREF="glib-basic-types.html#GCHAR"
+>gchar</A
+> *path,
+                                             <A
+HREF="glib-basic-types.html#GUINT"
+>guint</A
+> flags,
+                                             <A
+HREF="glib-error-reporting.html#GERROR"
+>GError</A
+> **error);
+G_CONST_RETURN <A
+HREF="glib-basic-types.html#GCHAR"
+>gchar</A
+>* <A
+HREF="glib-file-utilities.html#G-DIR-READ-NAME"
+>g_dir_read_name</A
+>       (<A
+HREF="glib-file-utilities.html#GDIR"
+>GDir</A
+> *dir);
+void        <A
+HREF="glib-file-utilities.html#G-DIR-REWIND"
+>g_dir_rewind</A
+>                    (<A
+HREF="glib-file-utilities.html#GDIR"
+>GDir</A
+> *dir);
+void        <A
+HREF="glib-file-utilities.html#G-DIR-CLOSE"
+>g_dir_close</A
+>                     (<A
+HREF="glib-file-utilities.html#GDIR"
+>GDir</A
+> *dir);&#13;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN21461"
+></A
+><H2
+>Description</H2
+><P
+></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN21464"
+></A
+><H2
+>Details</H2
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN21466"
+></A
+><H3
+><A
+NAME="GFILEERROR"
+></A
+>enum GFileError</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>typedef enum
+{
+  G_FILE_ERROR_EXIST,
+  G_FILE_ERROR_ISDIR,
+  G_FILE_ERROR_ACCES,
+  G_FILE_ERROR_NAMETOOLONG,
+  G_FILE_ERROR_NOENT,
+  G_FILE_ERROR_NOTDIR,
+  G_FILE_ERROR_NXIO,
+  G_FILE_ERROR_NODEV,
+  G_FILE_ERROR_ROFS,
+  G_FILE_ERROR_TXTBSY,
+  G_FILE_ERROR_FAULT,
+  G_FILE_ERROR_LOOP,
+  G_FILE_ERROR_NOSPC,
+  G_FILE_ERROR_NOMEM,
+  G_FILE_ERROR_MFILE,
+  G_FILE_ERROR_NFILE,
+  G_FILE_ERROR_BADF,
+  G_FILE_ERROR_INVAL,
+  G_FILE_ERROR_PIPE,
+  G_FILE_ERROR_AGAIN,
+  G_FILE_ERROR_INTR,
+  G_FILE_ERROR_IO,
+  G_FILE_ERROR_PERM,
+  G_FILE_ERROR_FAILED
+} GFileError;</PRE
+></TD
+></TR
+></TABLE
+><P
+>Values corresponding to <TT
+CLASS="LITERAL"
+>errno</TT
+> codes returned from file operations
+on UNIX. Unlike <TT
+CLASS="LITERAL"
+>errno</TT
+> codes, <A
+HREF="glib-file-utilities.html#GFILEERROR"
+>GFileError</A
+> values are available on 
+all systems, even Windows. The exact meaning of each code depends on what
+sort of file operation you were performing; the UNIX documentation
+gives more details. The following error code descriptions come 
+from the GNU C Library manual, and are under the copyright
+of that manual.</P
+><P
+>It's not very portable to make detailed assumptions about exactly
+which errors will be returned from a given operation. Some errors
+don't occur on some systems, etc., sometimes there are subtle
+differences in when a system will report a given error, etc.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21476"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="LITERAL"
+>G_FILE_ERROR_EXIST</TT
+></SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>Operation not permitted; only the owner of the
+     file (or other resource) or processes with special privileges can
+     perform the operation.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21481"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="LITERAL"
+>G_FILE_ERROR_ISDIR</TT
+></SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>File is a directory; you cannot open a directory
+     for writing, or create or remove hard links to it.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21486"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="LITERAL"
+>G_FILE_ERROR_ACCES</TT
+></SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>Permission denied; the file permissions do not
+     allow the attempted operation.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21491"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="LITERAL"
+>G_FILE_ERROR_NAMETOOLONG</TT
+></SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>Filename too long.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21496"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="LITERAL"
+>G_FILE_ERROR_NOENT</TT
+></SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>No such file or directory.  This is a "file
+     doesn't exist" error for ordinary files that are referenced in
+     contexts where they are expected to already exist.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21501"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="LITERAL"
+>G_FILE_ERROR_NOTDIR</TT
+></SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>A file that isn't a directory was specified when
+     a directory is required.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21506"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="LITERAL"
+>G_FILE_ERROR_NXIO</TT
+></SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>No such device or address.  The system tried to
+     use the device represented by a file you specified, and it
+     couldn't find the device.  This can mean that the device file was
+     installed incorrectly, or that the physical device is missing or
+     not correctly attached to the computer.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21511"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="LITERAL"
+>G_FILE_ERROR_NODEV</TT
+></SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>This file is of a type that doesn't support
+     mapping.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21516"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="LITERAL"
+>G_FILE_ERROR_ROFS</TT
+></SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>The directory containing the new link can't be
+          modified because it's on a read-only file system.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21521"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="LITERAL"
+>G_FILE_ERROR_TXTBSY</TT
+></SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>Text file busy.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21526"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="LITERAL"
+>G_FILE_ERROR_FAULT</TT
+></SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>You passed in a pointer to bad memory.
+  (GLib won't reliably return this, don't pass in pointers to bad
+  memory.)</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21531"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="LITERAL"
+>G_FILE_ERROR_LOOP</TT
+></SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>Too many levels of symbolic links were encountered
+  in looking up a file name.  This often indicates a cycle of symbolic
+  links.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21536"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="LITERAL"
+>G_FILE_ERROR_NOSPC</TT
+></SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>No space left on device; write operation on a
+  file failed because the disk is full.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21541"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="LITERAL"
+>G_FILE_ERROR_NOMEM</TT
+></SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>No memory available.  The system cannot allocate
+     more virtual memory because its capacity is full.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21546"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="LITERAL"
+>G_FILE_ERROR_MFILE</TT
+></SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>The current process has too many files open and
+     can't open any more.  Duplicate descriptors do count toward this
+     limit.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21551"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="LITERAL"
+>G_FILE_ERROR_NFILE</TT
+></SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>There are too many distinct file openings in the
+     entire system.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21556"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="LITERAL"
+>G_FILE_ERROR_BADF</TT
+></SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>Bad file descriptor; for example, I/O on a
+     descriptor that has been closed or reading from a descriptor open
+     only for writing (or vice versa).</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21561"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="LITERAL"
+>G_FILE_ERROR_INVAL</TT
+></SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>Invalid argument.  This is used to indicate
+     various kinds of problems with passing the wrong argument to a
+     library function.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21566"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="LITERAL"
+>G_FILE_ERROR_PIPE</TT
+></SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>Broken pipe; there is no process reading from the
+     other end of a pipe.  Every library function that returns this
+     error code also generates a `SIGPIPE' signal; this signal
+     terminates the program if not handled or blocked.  Thus, your
+     program will never actually see this code unless it has handled or
+     blocked `SIGPIPE'.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21571"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="LITERAL"
+>G_FILE_ERROR_AGAIN</TT
+></SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>Resource temporarily unavailable; the call might
+     work if you try again later.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21576"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="LITERAL"
+>G_FILE_ERROR_INTR</TT
+></SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>Interrupted function call; an asynchronous signal
+     occurred and prevented completion of the call.  When this
+     happens, you should try the call again.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21581"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="LITERAL"
+>G_FILE_ERROR_IO</TT
+></SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>Input/output error; usually used for physical read
+    or write errors. i.e. the disk or other physical device hardware
+    is returning errors.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21586"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="LITERAL"
+>G_FILE_ERROR_PERM</TT
+></SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>Operation not permitted; only the owner of the
+     file (or other resource) or processes with special privileges can
+     perform the operation.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21591"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="LITERAL"
+>G_FILE_ERROR_FAILED</TT
+></SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>Does not correspond to a UNIX error code; this
+  is the standard "failed for unspecified reason" error code present in 
+  all <A
+HREF="glib-error-reporting.html#GERROR"
+>GError</A
+> error code enumerations. Returned if no specific
+  code applies.&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN21597"
+></A
+><H3
+><A
+NAME="G-FILE-ERROR-CAPS"
+></A
+>G_FILE_ERROR</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define G_FILE_ERROR g_file_error_quark ()</PRE
+></TD
+></TR
+></TABLE
+><P
+>Error domain for file operations. Errors in this domain will
+be from the <A
+HREF="glib-file-utilities.html#GFILEERROR"
+>GFileError</A
+> enumeration. See <A
+HREF="glib-error-reporting.html#GERROR"
+>GError</A
+> for information on 
+error domains.</P
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN21604"
+></A
+><H3
+><A
+NAME="GFILETEST"
+></A
+>enum GFileTest</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>typedef enum
+{
+  G_FILE_TEST_IS_REGULAR    = 1 &lt;&lt; 0,
+  G_FILE_TEST_IS_SYMLINK    = 1 &lt;&lt; 1,
+  G_FILE_TEST_IS_DIR        = 1 &lt;&lt; 2,
+  G_FILE_TEST_IS_EXECUTABLE = 1 &lt;&lt; 3,
+  G_FILE_TEST_EXISTS        = 1 &lt;&lt; 4
+} GFileTest;</PRE
+></TD
+></TR
+></TABLE
+><P
+>A test to perform an a file using <A
+HREF="glib-file-utilities.html#G-FILE-TEST"
+>g_file_test</A
+>().</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21611"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="LITERAL"
+>G_FILE_TEST_IS_REGULAR</TT
+></SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="LITERAL"
+>TRUE</TT
+> if the file is a regular file (not a symlink or directory)</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21617"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="LITERAL"
+>G_FILE_TEST_IS_SYMLINK</TT
+></SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="LITERAL"
+>TRUE</TT
+> if the file is a symlink.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21623"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="LITERAL"
+>G_FILE_TEST_IS_DIR</TT
+></SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="LITERAL"
+>TRUE</TT
+> if the file is a directory.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21629"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="LITERAL"
+>G_FILE_TEST_IS_EXECUTABLE</TT
+></SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="LITERAL"
+>TRUE</TT
+> if the file is executable.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21635"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="LITERAL"
+>G_FILE_TEST_EXISTS</TT
+></SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="LITERAL"
+>TRUE</TT
+> if the file exists. It may or may not be a regular file.&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN21641"
+></A
+><H3
+><A
+NAME="G-FILE-ERROR-FROM-ERRNO"
+></A
+>g_file_error_from_errno ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="glib-file-utilities.html#GFILEERROR"
+>GFileError</A
+>  g_file_error_from_errno         (<A
+HREF="glib-basic-types.html#GINT"
+>gint</A
+> err_no);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Gets a <A
+HREF="glib-file-utilities.html#GFILEERROR"
+>GFileError</A
+> constant based on the passed-in <TT
+CLASS="PARAMETER"
+><I
+>errno</I
+></TT
+>.
+For example, if you pass in <TT
+CLASS="LITERAL"
+>EEXIST</TT
+> this function returns
+G_FILE_ERROR_EXIST. Unlike <TT
+CLASS="PARAMETER"
+><I
+>errno</I
+></TT
+> values, you can portably
+assume that all <A
+HREF="glib-file-utilities.html#GFILEERROR"
+>GFileError</A
+> values will exist.</P
+><P
+>Normally a <A
+HREF="glib-file-utilities.html#GFILEERROR"
+>GFileError</A
+> value goes into a <A
+HREF="glib-error-reporting.html#GERROR"
+>GError</A
+> returned
+from a function that manipulates files. So you would use
+<A
+HREF="glib-file-utilities.html#G-FILE-ERROR-FROM-ERRNO"
+>g_file_error_from_errno</A
+>() when constructing a <A
+HREF="glib-error-reporting.html#GERROR"
+>GError</A
+>.</P
+><P
+></P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21661"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>err_no</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+> an "errno" value</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21666"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+> <A
+HREF="glib-file-utilities.html#GFILEERROR"
+>GFileError</A
+> corresponding to the given <TT
+CLASS="PARAMETER"
+><I
+>errno</I
+></TT
+></P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN21673"
+></A
+><H3
+><A
+NAME="G-FILE-GET-CONTENTS"
+></A
+>g_file_get_contents ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="glib-basic-types.html#GBOOLEAN"
+>gboolean</A
+>    g_file_get_contents             (const <A
+HREF="glib-basic-types.html#GCHAR"
+>gchar</A
+> *filename,
+                                             <A
+HREF="glib-basic-types.html#GCHAR"
+>gchar</A
+> **contents,
+                                             <A
+HREF="glib-basic-types.html#GSIZE"
+>gsize</A
+> *length,
+                                             <A
+HREF="glib-error-reporting.html#GERROR"
+>GError</A
+> **error);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Reads an entire file into allocated memory, with good error
+checking. If <TT
+CLASS="PARAMETER"
+><I
+>error</I
+></TT
+> is set, <TT
+CLASS="LITERAL"
+>FALSE</TT
+> is returned, and <TT
+CLASS="PARAMETER"
+><I
+>contents</I
+></TT
+> is set
+to <TT
+CLASS="LITERAL"
+>NULL</TT
+>. If <TT
+CLASS="LITERAL"
+>TRUE</TT
+> is returned, <TT
+CLASS="PARAMETER"
+><I
+>error</I
+></TT
+> will not be set, and <TT
+CLASS="PARAMETER"
+><I
+>contents</I
+></TT
+>
+will be set to the file contents.  The string stored in <TT
+CLASS="PARAMETER"
+><I
+>contents</I
+></TT
+>
+will be nul-terminated, so for text files you can pass <TT
+CLASS="LITERAL"
+>NULL</TT
+> for the
+<TT
+CLASS="PARAMETER"
+><I
+>length</I
+></TT
+> argument.  The error domain is <A
+HREF="glib-file-utilities.html#G-FILE-ERROR-CAPS"
+>G_FILE_ERROR</A
+>. Possible
+error codes are those in the <A
+HREF="glib-file-utilities.html#GFILEERROR"
+>GFileError</A
+> enumeration.</P
+><P
+></P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21697"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>filename</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+> a file to read contents from</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21702"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>contents</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+> location to store an allocated string</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21707"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>length</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+> location to store length in bytes of the contents</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21712"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>error</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+> return location for a <A
+HREF="glib-error-reporting.html#GERROR"
+>GError</A
+></P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21718"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+> <TT
+CLASS="LITERAL"
+>TRUE</TT
+> on success, <TT
+CLASS="LITERAL"
+>FALSE</TT
+> if error is set</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN21725"
+></A
+><H3
+><A
+NAME="G-FILE-TEST"
+></A
+>g_file_test ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="glib-basic-types.html#GBOOLEAN"
+>gboolean</A
+>    g_file_test                     (const <A
+HREF="glib-basic-types.html#GCHAR"
+>gchar</A
+> *filename,
+                                             <A
+HREF="glib-file-utilities.html#GFILETEST"
+>GFileTest</A
+> test);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Returns <TT
+CLASS="LITERAL"
+>TRUE</TT
+> if any of the tests in the bitfield <TT
+CLASS="PARAMETER"
+><I
+>test</I
+></TT
+> are
+<TT
+CLASS="LITERAL"
+>TRUE</TT
+>. For example, <TT
+CLASS="LITERAL"
+>(G_FILE_TEST_EXISTS | 
+G_FILE_TEST_IS_DIR)</TT
+> will return <TT
+CLASS="LITERAL"
+>TRUE</TT
+> if the file exists; 
+the check whether it's a directory doesn't matter since the existence 
+test is <TT
+CLASS="LITERAL"
+>TRUE</TT
+>. With the current set of available tests, there's no point
+passing in more than one test at a time.</P
+><P
+>Apart from G_FILE_TEST_IS_SYMLINK all tests follow symbolic links,
+so for a symbolic link to a regular file <A
+HREF="glib-file-utilities.html#G-FILE-TEST"
+>g_file_test</A
+>() will return
+<TT
+CLASS="LITERAL"
+>TRUE</TT
+> for both G_FILE_TEST_IS_SYMLINK and G_FILE_TEST_IS_REGULAR.</P
+><P
+>Note, that for a dangling symbolic link <A
+HREF="glib-file-utilities.html#G-FILE-TEST"
+>g_file_test</A
+>() will return
+<TT
+CLASS="LITERAL"
+>TRUE</TT
+> for G_FILE_TEST_IS_SYMLINK and <TT
+CLASS="LITERAL"
+>FALSE</TT
+> for all other flags.</P
+><P
+></P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21752"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>filename</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+> a filename to test</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21757"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>test</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+> bitfield of <A
+HREF="glib-file-utilities.html#GFILETEST"
+>GFileTest</A
+> flags</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21763"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+> whether a test was <TT
+CLASS="LITERAL"
+>TRUE</TT
+></P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN21769"
+></A
+><H3
+><A
+NAME="G-MKSTEMP"
+></A
+>g_mkstemp ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>int         g_mkstemp                       (char *tmpl);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Opens a temporary file. See the <TT
+CLASS="FUNCTION"
+>mkstemp()</TT
+> documentation
+on most UNIX-like systems. This is a portability wrapper, which simply calls 
+<TT
+CLASS="FUNCTION"
+>mkstemp()</TT
+> on systems that have it, and implements 
+it in GLib otherwise.</P
+><P
+>The parameter is a string that should match the rules for
+<TT
+CLASS="FUNCTION"
+>mkstemp()</TT
+>, i.e. end in "XXXXXX". The X string will 
+be modified to form the name of a file that didn't exist.</P
+><P
+></P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21783"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>tmpl</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+> template filename</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21788"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+> A file handle (as from <TT
+CLASS="FUNCTION"
+>open()</TT
+>) to the file
+opened for reading and writing. The file is opened in binary mode
+on platforms where there is a difference. The file handle should be
+closed with <TT
+CLASS="FUNCTION"
+>close()</TT
+>. In case of errors, -1 is returned.</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN21797"
+></A
+><H3
+><A
+NAME="G-FILE-OPEN-TMP"
+></A
+>g_file_open_tmp ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>int         g_file_open_tmp                 (const char *tmpl,
+                                             char **name_used,
+                                             <A
+HREF="glib-error-reporting.html#GERROR"
+>GError</A
+> **error);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Opens a file for writing in the preferred directory for temporary
+files (as returned by <A
+HREF="glib-miscellaneous-utility-functions.html#G-GET-TMP-DIR"
+>g_get_tmp_dir</A
+>()). </P
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>tmpl</I
+></TT
+> should be a string ending with six 'X' characters, as the
+parameter to <A
+HREF="glib-file-utilities.html#G-MKSTEMP"
+>g_mkstemp</A
+>() (or <TT
+CLASS="FUNCTION"
+>mkstemp()</TT
+>). 
+However, unlike these functions, the template should only be a 
+basename, no directory components are allowed. If template is <TT
+CLASS="LITERAL"
+>NULL</TT
+>, 
+a default template is used.</P
+><P
+>Note that in contrast to <A
+HREF="glib-file-utilities.html#G-MKSTEMP"
+>g_mkstemp</A
+>() (and <TT
+CLASS="FUNCTION"
+>mkstemp()</TT
+>) 
+<TT
+CLASS="PARAMETER"
+><I
+>tmpl</I
+></TT
+> is not modified, and might thus be a read-only literal string.</P
+><P
+>The actual name used is returned in <TT
+CLASS="PARAMETER"
+><I
+>name_used</I
+></TT
+> if non-<TT
+CLASS="LITERAL"
+>NULL</TT
+>. This
+string should be freed with <A
+HREF="glib-memory-allocation.html#G-FREE"
+>g_free</A
+>() when not needed any longer.</P
+><P
+></P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21821"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>tmpl</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+> Template for file name, as in <A
+HREF="glib-file-utilities.html#G-MKSTEMP"
+>g_mkstemp</A
+>(), basename only</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21827"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>name_used</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+> location to store actual name used</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21832"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>error</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+> return location for a <A
+HREF="glib-error-reporting.html#GERROR"
+>GError</A
+></P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21838"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+> A file handle (as from <TT
+CLASS="FUNCTION"
+>open()</TT
+>) to 
+the file opened for reading and writing. The file is opened in binary 
+mode on platforms where there is a difference. The file handle should be
+closed with <TT
+CLASS="FUNCTION"
+>close()</TT
+>. In case of errors, -1 is returned 
+and <TT
+CLASS="PARAMETER"
+><I
+>error</I
+></TT
+> will be set.</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN21848"
+></A
+><H3
+><A
+NAME="GDIR"
+></A
+>struct GDir</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>struct GDir;</PRE
+></TD
+></TR
+></TABLE
+><P
+>An opaque structure representing an opened directory.</P
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN21853"
+></A
+><H3
+><A
+NAME="G-DIR-OPEN"
+></A
+>g_dir_open ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="glib-file-utilities.html#GDIR"
+>GDir</A
+>*       g_dir_open                      (const <A
+HREF="glib-basic-types.html#GCHAR"
+>gchar</A
+> *path,
+                                             <A
+HREF="glib-basic-types.html#GUINT"
+>guint</A
+> flags,
+                                             <A
+HREF="glib-error-reporting.html#GERROR"
+>GError</A
+> **error);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Opens a directory for reading. The names of the files
+in the directory can then be retrieved using
+g_dir_get_name().</P
+><P
+></P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21865"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>path</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+> the path to the directory you are interested in</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21870"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>flags</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+> Currently must be set to 0. Reserved for future use.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21875"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>error</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+> return location for a <A
+HREF="glib-error-reporting.html#GERROR"
+>GError</A
+>, or <TT
+CLASS="LITERAL"
+>NULL</TT
+>.
+        If non-<TT
+CLASS="LITERAL"
+>NULL</TT
+>, an error will be set if and only if
+        g_dir_open_fails.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21883"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+> a newly allocated <A
+HREF="glib-file-utilities.html#GDIR"
+>GDir</A
+> on success, <TT
+CLASS="LITERAL"
+>NULL</TT
+> on failure.
+  If non-<TT
+CLASS="LITERAL"
+>NULL</TT
+>, you must free the result with <A
+HREF="glib-file-utilities.html#G-DIR-CLOSE"
+>g_dir_close</A
+>()
+  when you are finished with it.</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN21892"
+></A
+><H3
+><A
+NAME="G-DIR-READ-NAME"
+></A
+>g_dir_read_name ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>G_CONST_RETURN <A
+HREF="glib-basic-types.html#GCHAR"
+>gchar</A
+>* g_dir_read_name       (<A
+HREF="glib-file-utilities.html#GDIR"
+>GDir</A
+> *dir);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Retrieves the name of the next entry in the directory.
+The '.' and '..' entries are omitted.</P
+><P
+></P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21901"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>dir</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+> a <A
+HREF="glib-file-utilities.html#GDIR"
+>GDir</A
+>* created by <A
+HREF="glib-file-utilities.html#G-DIR-OPEN"
+>g_dir_open</A
+>()</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21908"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+> The entries name or <TT
+CLASS="LITERAL"
+>NULL</TT
+> if there are no 
+  more entries. The return value is owned by GLib and
+  must not be modified or freed.</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN21914"
+></A
+><H3
+><A
+NAME="G-DIR-REWIND"
+></A
+>g_dir_rewind ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>void        g_dir_rewind                    (<A
+HREF="glib-file-utilities.html#GDIR"
+>GDir</A
+> *dir);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Resets the given directory. The next call to <A
+HREF="glib-file-utilities.html#G-DIR-READ-NAME"
+>g_dir_read_name</A
+>()
+will return the first entry again.</P
+><P
+></P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21923"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>dir</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+> a <A
+HREF="glib-file-utilities.html#GDIR"
+>GDir</A
+>* created by <A
+HREF="glib-file-utilities.html#G-DIR-OPEN"
+>g_dir_open</A
+>()</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN21930"
+></A
+><H3
+><A
+NAME="G-DIR-CLOSE"
+></A
+>g_dir_close ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>void        g_dir_close                     (<A
+HREF="glib-file-utilities.html#GDIR"
+>GDir</A
+> *dir);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Closes the directory and deallocates all related resources.</P
+><P
+></P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN21938"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>dir</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+> a <A
+HREF="glib-file-utilities.html#GDIR"
+>GDir</A
+>* created by <A
+HREF="glib-file-utilities.html#G-DIR-OPEN"
+>g_dir_open</A
+>()</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><BR
+CLEAR="all"><BR><TABLE
+WIDTH="100%"
+BORDER="0"
+BGCOLOR="#000000"
+CELLPADDING="1"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="left"
+><A
+HREF="glib-spawning-processes.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>&#60;&#60;&#60; Previous Page</B
+></FONT
+></A
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="center"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+><A
+HREF="index.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Home</B
+></FONT
+></A
+></B
+></FONT
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="center"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+><A
+HREF="glib-utilities.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Up</B
+></FONT
+></A
+></B
+></FONT
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="right"
+><A
+HREF="glib-shell-related-utilities.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Next Page &#62;&#62;&#62;</B
+></FONT
+></A
+></TD
+></TR
+><TR
+><TD
+COLSPAN="2"
+ALIGN="left"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Spawning Processes</B
+></FONT
+></TD
+><TD
+COLSPAN="2"
+ALIGN="right"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Shell-related Utilities</B
+></FONT
+></TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,33 @@
+17/11/23 17:42:39 INFO executor.CoarseGrainedExecutorBackend: Started daemon with process name: 11452@huscs008
+17/11/23 17:42:39 INFO util.SignalUtils: Registered signal handler for TERM
+17/11/23 17:42:39 INFO util.SignalUtils: Registered signal handler for HUP
+17/11/23 17:42:39 INFO util.SignalUtils: Registered signal handler for INT
+17/11/23 17:42:39 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+17/11/23 17:42:39 INFO spark.SecurityManager: Changing view acls to: general
+17/11/23 17:42:39 INFO spark.SecurityManager: Changing modify acls to: general
+17/11/23 17:42:39 INFO spark.SecurityManager: Changing view acls groups to: 
+17/11/23 17:42:39 INFO spark.SecurityManager: Changing modify acls groups to: 
+17/11/23 17:42:39 INFO spark.SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(general); groups with view permissions: Set(); users  with modify permissions: Set(general); groups with modify permissions: Set()
+17/11/23 17:42:40 INFO client.TransportClientFactory: Successfully created connection to /172.16.0.108:35016 after 66 ms (0 ms spent in bootstraps)
+17/11/23 17:42:40 INFO spark.SecurityManager: Changing view acls to: general
+17/11/23 17:42:40 INFO spark.SecurityManager: Changing modify acls to: general
+17/11/23 17:42:40 INFO spark.SecurityManager: Changing view acls groups to: 
+17/11/23 17:42:40 INFO spark.SecurityManager: Changing modify acls groups to: 
+17/11/23 17:42:40 INFO spark.SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(general); groups with view permissions: Set(); users  with modify permissions: Set(general); groups with modify permissions: Set()
+17/11/23 17:42:40 INFO client.TransportClientFactory: Successfully created connection to /172.16.0.108:35016 after 1 ms (0 ms spent in bootstraps)
+17/11/23 17:42:40 INFO storage.DiskBlockManager: Created local directory at /tmp/spark-2967ed42-393f-4f32-9321-43cafc6df0b5/executor-08e758ff-63bc-4dda-820d-df52e4a460f2/blockmgr-694f62e1-d66a-4789-b586-76da4e205c57
+17/11/23 17:42:40 INFO memory.MemoryStore: MemoryStore started with capacity 366.3 MB
+17/11/23 17:42:40 INFO executor.CoarseGrainedExecutorBackend: Connecting to driver: spark://CoarseGrainedScheduler@172.16.0.108:35016
+17/11/23 17:42:40 INFO worker.WorkerWatcher: Connecting to worker spark://Worker@172.16.0.108:40667
+17/11/23 17:42:40 INFO client.TransportClientFactory: Successfully created connection to /172.16.0.108:40667 after 3 ms (0 ms spent in bootstraps)
+17/11/23 17:42:40 INFO worker.WorkerWatcher: Successfully connected to spark://Worker@172.16.0.108:40667
+17/11/23 17:42:40 INFO executor.CoarseGrainedExecutorBackend: Successfully registered with driver
+17/11/23 17:42:40 INFO executor.Executor: Starting executor ID 0 on host 172.16.0.108
+17/11/23 17:42:40 INFO util.Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 38811.
+17/11/23 17:42:40 INFO netty.NettyBlockTransferService: Server created on 172.16.0.108:38811
+17/11/23 17:42:40 INFO storage.BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+17/11/23 17:42:40 INFO storage.BlockManagerMaster: Registering BlockManager BlockManagerId(0, 172.16.0.108, 38811, None)
+17/11/23 17:42:40 INFO storage.BlockManagerMaster: Registered BlockManager BlockManagerId(0, 172.16.0.108, 38811, None)
+17/11/23 17:42:40 INFO storage.BlockManager: Initialized BlockManager: BlockManagerId(0, 172.16.0.108, 38811, None)
+17/11/23 17:42:45 INFO executor.CoarseGrainedExecutorBackend: Driver commanded a shutdown
+72.16.0.108, 38811, None)

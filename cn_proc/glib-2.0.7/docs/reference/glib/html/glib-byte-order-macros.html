@@ -1,0 +1,5595 @@
+<HTML
+><HEAD
+><TITLE
+>Byte Order Macros</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE="GLib Reference Manual"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="GLib Fundamentals"
+HREF="glib-fundamentals.html"><LINK
+REL="PREVIOUS"
+TITLE="Type Conversion Macros"
+HREF="glib-type-conversion-macros.html"><LINK
+REL="NEXT"
+TITLE="Numerical Definitions"
+HREF="glib-numerical-definitions.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+BGCOLOR="#000000"
+CELLPADDING="1"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="4"
+ALIGN="center"
+><FONT
+COLOR="#FFFFFF"
+SIZE="5"
+>GLib Reference Manual</FONT
+></TH
+></TR
+><TR
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="left"
+><A
+HREF="glib-type-conversion-macros.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>&#60;&#60;&#60; Previous Page</B
+></FONT
+></A
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="center"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+><A
+HREF="index.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Home</B
+></FONT
+></A
+></B
+></FONT
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="center"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+><A
+HREF="glib-fundamentals.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Up</B
+></FONT
+></A
+></B
+></FONT
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="right"
+><A
+HREF="glib-numerical-definitions.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Next Page &#62;&#62;&#62;</B
+></FONT
+></A
+></TD
+></TR
+></TABLE
+></DIV
+><H1
+><A
+NAME="GLIB-BYTE-ORDER-MACROS">Byte Order Macros</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN1132"
+></A
+><H2
+>Name</H2
+>Byte Order Macros&nbsp;--&nbsp;a portable way to convert between different byte orders.</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN1135"><H2
+>Synopsis</H2
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="SYNOPSIS"
+>&#13;#include &lt;glib.h&gt;
+
+
+#define     <A
+HREF="glib-byte-order-macros.html#G-BYTE-ORDER-CAPS"
+>G_BYTE_ORDER</A
+>
+#define     <A
+HREF="glib-byte-order-macros.html#G-LITTLE-ENDIAN-CAPS"
+>G_LITTLE_ENDIAN</A
+>
+#define     <A
+HREF="glib-byte-order-macros.html#G-BIG-ENDIAN-CAPS"
+>G_BIG_ENDIAN</A
+>
+#define     <A
+HREF="glib-byte-order-macros.html#G-PDP-ENDIAN-CAPS"
+>G_PDP_ENDIAN</A
+>
+
+#define     <A
+HREF="glib-byte-order-macros.html#G-HTONL"
+>g_htonl</A
+>                         (val)
+#define     <A
+HREF="glib-byte-order-macros.html#G-HTONS"
+>g_htons</A
+>                         (val)
+#define     <A
+HREF="glib-byte-order-macros.html#G-NTOHL"
+>g_ntohl</A
+>                         (val)
+#define     <A
+HREF="glib-byte-order-macros.html#G-NTOHS"
+>g_ntohs</A
+>                         (val)
+
+#define     <A
+HREF="glib-byte-order-macros.html#GINT-FROM-BE-CAPS"
+>GINT_FROM_BE</A
+>                    (val)
+#define     <A
+HREF="glib-byte-order-macros.html#GINT-FROM-LE-CAPS"
+>GINT_FROM_LE</A
+>                    (val)
+#define     <A
+HREF="glib-byte-order-macros.html#GINT-TO-BE-CAPS"
+>GINT_TO_BE</A
+>                      (val)
+#define     <A
+HREF="glib-byte-order-macros.html#GINT-TO-LE-CAPS"
+>GINT_TO_LE</A
+>                      (val)
+
+#define     <A
+HREF="glib-byte-order-macros.html#GUINT-FROM-BE-CAPS"
+>GUINT_FROM_BE</A
+>                   (val)
+#define     <A
+HREF="glib-byte-order-macros.html#GUINT-FROM-LE-CAPS"
+>GUINT_FROM_LE</A
+>                   (val)
+#define     <A
+HREF="glib-byte-order-macros.html#GUINT-TO-BE-CAPS"
+>GUINT_TO_BE</A
+>                     (val)
+#define     <A
+HREF="glib-byte-order-macros.html#GUINT-TO-LE-CAPS"
+>GUINT_TO_LE</A
+>                     (val)
+
+#define     <A
+HREF="glib-byte-order-macros.html#GLONG-FROM-BE-CAPS"
+>GLONG_FROM_BE</A
+>                   (val)
+#define     <A
+HREF="glib-byte-order-macros.html#GLONG-FROM-LE-CAPS"
+>GLONG_FROM_LE</A
+>                   (val)
+#define     <A
+HREF="glib-byte-order-macros.html#GLONG-TO-BE-CAPS"
+>GLONG_TO_BE</A
+>                     (val)
+#define     <A
+HREF="glib-byte-order-macros.html#GLONG-TO-LE-CAPS"
+>GLONG_TO_LE</A
+>                     (val)
+
+#define     <A
+HREF="glib-byte-order-macros.html#GULONG-FROM-BE-CAPS"
+>GULONG_FROM_BE</A
+>                  (val)
+#define     <A
+HREF="glib-byte-order-macros.html#GULONG-FROM-LE-CAPS"
+>GULONG_FROM_LE</A
+>                  (val)
+#define     <A
+HREF="glib-byte-order-macros.html#GULONG-TO-BE-CAPS"
+>GULONG_TO_BE</A
+>                    (val)
+#define     <A
+HREF="glib-byte-order-macros.html#GULONG-TO-LE-CAPS"
+>GULONG_TO_LE</A
+>                    (val)
+
+#define     <A
+HREF="glib-byte-order-macros.html#GINT16-FROM-BE-CAPS"
+>GINT16_FROM_BE</A
+>                  (val)
+#define     <A
+HREF="glib-byte-order-macros.html#GINT16-FROM-LE-CAPS"
+>GINT16_FROM_LE</A
+>                  (val)
+#define     <A
+HREF="glib-byte-order-macros.html#GINT16-TO-BE-CAPS"
+>GINT16_TO_BE</A
+>                    (val)
+#define     <A
+HREF="glib-byte-order-macros.html#GINT16-TO-LE-CAPS"
+>GINT16_TO_LE</A
+>                    (val)
+
+#define     <A
+HREF="glib-byte-order-macros.html#GUINT16-FROM-BE-CAPS"
+>GUINT16_FROM_BE</A
+>                 (val)
+#define     <A
+HREF="glib-byte-order-macros.html#GUINT16-FROM-LE-CAPS"
+>GUINT16_FROM_LE</A
+>                 (val)
+#define     <A
+HREF="glib-byte-order-macros.html#GUINT16-TO-BE-CAPS"
+>GUINT16_TO_BE</A
+>                   (val)
+#define     <A
+HREF="glib-byte-order-macros.html#GUINT16-TO-LE-CAPS"
+>GUINT16_TO_LE</A
+>                   (val)
+
+#define     <A
+HREF="glib-byte-order-macros.html#GINT32-FROM-BE-CAPS"
+>GINT32_FROM_BE</A
+>                  (val)
+#define     <A
+HREF="glib-byte-order-macros.html#GINT32-FROM-LE-CAPS"
+>GINT32_FROM_LE</A
+>                  (val)
+#define     <A
+HREF="glib-byte-order-macros.html#GINT32-TO-BE-CAPS"
+>GINT32_TO_BE</A
+>                    (val)
+#define     <A
+HREF="glib-byte-order-macros.html#GINT32-TO-LE-CAPS"
+>GINT32_TO_LE</A
+>                    (val)
+
+#define     <A
+HREF="glib-byte-order-macros.html#GUINT32-FROM-BE-CAPS"
+>GUINT32_FROM_BE</A
+>                 (val)
+#define     <A
+HREF="glib-byte-order-macros.html#GUINT32-FROM-LE-CAPS"
+>GUINT32_FROM_LE</A
+>                 (val)
+#define     <A
+HREF="glib-byte-order-macros.html#GUINT32-TO-BE-CAPS"
+>GUINT32_TO_BE</A
+>                   (val)
+#define     <A
+HREF="glib-byte-order-macros.html#GUINT32-TO-LE-CAPS"
+>GUINT32_TO_LE</A
+>                   (val)
+
+#define     <A
+HREF="glib-byte-order-macros.html#GINT64-FROM-BE-CAPS"
+>GINT64_FROM_BE</A
+>                  (val)
+#define     <A
+HREF="glib-byte-order-macros.html#GINT64-FROM-LE-CAPS"
+>GINT64_FROM_LE</A
+>                  (val)
+#define     <A
+HREF="glib-byte-order-macros.html#GINT64-TO-BE-CAPS"
+>GINT64_TO_BE</A
+>                    (val)
+#define     <A
+HREF="glib-byte-order-macros.html#GINT64-TO-LE-CAPS"
+>GINT64_TO_LE</A
+>                    (val)
+
+#define     <A
+HREF="glib-byte-order-macros.html#GUINT64-FROM-BE-CAPS"
+>GUINT64_FROM_BE</A
+>                 (val)
+#define     <A
+HREF="glib-byte-order-macros.html#GUINT64-FROM-LE-CAPS"
+>GUINT64_FROM_LE</A
+>                 (val)
+#define     <A
+HREF="glib-byte-order-macros.html#GUINT64-TO-BE-CAPS"
+>GUINT64_TO_BE</A
+>                   (val)
+#define     <A
+HREF="glib-byte-order-macros.html#GUINT64-TO-LE-CAPS"
+>GUINT64_TO_LE</A
+>                   (val)
+
+#define     <A
+HREF="glib-byte-order-macros.html#GUINT16-SWAP-BE-PDP-CAPS"
+>GUINT16_SWAP_BE_PDP</A
+>             (val)
+#define     <A
+HREF="glib-byte-order-macros.html#GUINT16-SWAP-LE-BE-CAPS"
+>GUINT16_SWAP_LE_BE</A
+>              (val)
+#define     <A
+HREF="glib-byte-order-macros.html#GUINT16-SWAP-LE-PDP-CAPS"
+>GUINT16_SWAP_LE_PDP</A
+>             (val)
+
+#define     <A
+HREF="glib-byte-order-macros.html#GUINT32-SWAP-BE-PDP-CAPS"
+>GUINT32_SWAP_BE_PDP</A
+>             (val)
+#define     <A
+HREF="glib-byte-order-macros.html#GUINT32-SWAP-LE-BE-CAPS"
+>GUINT32_SWAP_LE_BE</A
+>              (val)
+#define     <A
+HREF="glib-byte-order-macros.html#GUINT32-SWAP-LE-PDP-CAPS"
+>GUINT32_SWAP_LE_PDP</A
+>             (val)
+
+#define     <A
+HREF="glib-byte-order-macros.html#GUINT64-SWAP-LE-BE-CAPS"
+>GUINT64_SWAP_LE_BE</A
+>              (val)&#13;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN1193"
+></A
+><H2
+>Description</H2
+><P
+>These macros provide a portable way to determine the host byte order
+and to convert values between different byte orders.</P
+><P
+>The byte order is the order in which bytes are stored to create larger
+data types such as the <A
+HREF="glib-basic-types.html#GINT"
+>gint</A
+> and <A
+HREF="glib-basic-types.html#GLONG"
+>glong</A
+> values.
+The host byte order is the byte order used on the current machine.</P
+><P
+>Some processors store the most significant bytes (i.e. the bytes that
+hold the largest part of the value) first. These are known as big-endian
+processors. </P
+><P
+>Other processors (notably the x86 family) store the most significant byte
+last. These are known as little-endian processors.</P
+><P
+>Finally, to complicate matters, some other processors store the bytes in
+a rather curious order known as PDP-endian. For a 4-byte word, the 3rd
+most significant byte is stored first, then the 4th, then the 1st and finally
+the 2nd.</P
+><P
+>Obviously there is a problem when these different processors communicate
+with each other, for example over networks or by using binary file formats.
+This is where these macros come in.
+They are typically used to convert values into a byte order
+which has been agreed on for use when communicating between different
+processors. The Internet uses what is known as 'network byte order'
+as the standard byte order (which is in fact the big-endian byte order).</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN1203"
+></A
+><H2
+>Details</H2
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1205"
+></A
+><H3
+><A
+NAME="G-BYTE-ORDER-CAPS"
+></A
+>G_BYTE_ORDER</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define G_BYTE_ORDER G_LITTLE_ENDIAN</PRE
+></TD
+></TR
+></TABLE
+><P
+>The host byte order.
+This can be either <A
+HREF="glib-byte-order-macros.html#G-LITTLE-ENDIAN-CAPS"
+>G_LITTLE_ENDIAN</A
+> or <A
+HREF="glib-byte-order-macros.html#G-BIG-ENDIAN-CAPS"
+>G_BIG_ENDIAN</A
+> (support for
+<A
+HREF="glib-byte-order-macros.html#G-PDP-ENDIAN-CAPS"
+>G_PDP_ENDIAN</A
+> may be added in future.)</P
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1213"
+></A
+><H3
+><A
+NAME="G-LITTLE-ENDIAN-CAPS"
+></A
+>G_LITTLE_ENDIAN</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define G_LITTLE_ENDIAN 1234</PRE
+></TD
+></TR
+></TABLE
+><P
+>Specifies one of the possible types of byte order.
+See <A
+HREF="glib-byte-order-macros.html#G-BYTE-ORDER-CAPS"
+>G_BYTE_ORDER</A
+>.</P
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1219"
+></A
+><H3
+><A
+NAME="G-BIG-ENDIAN-CAPS"
+></A
+>G_BIG_ENDIAN</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define G_BIG_ENDIAN    4321</PRE
+></TD
+></TR
+></TABLE
+><P
+>Specifies one of the possible types of byte order.
+See <A
+HREF="glib-byte-order-macros.html#G-BYTE-ORDER-CAPS"
+>G_BYTE_ORDER</A
+>.</P
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1225"
+></A
+><H3
+><A
+NAME="G-PDP-ENDIAN-CAPS"
+></A
+>G_PDP_ENDIAN</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define G_PDP_ENDIAN    3412		/* unused, need specific PDP check */	</PRE
+></TD
+></TR
+></TABLE
+><P
+>Specifies one of the possible types of byte order (currently unused).
+See <A
+HREF="glib-byte-order-macros.html#G-BYTE-ORDER-CAPS"
+>G_BYTE_ORDER</A
+>.</P
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1231"
+></A
+><H3
+><A
+NAME="G-HTONL"
+></A
+>g_htonl()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define     g_htonl(val)</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a 32-bit integer value from host to network byte order.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1237"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a 32-bit integer value in host byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1242"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to network byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1248"
+></A
+><H3
+><A
+NAME="G-HTONS"
+></A
+>g_htons()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define     g_htons(val)</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a 16-bit integer value from host to network byte order.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1254"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a 16-bit integer value in host byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1259"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to network byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1265"
+></A
+><H3
+><A
+NAME="G-NTOHL"
+></A
+>g_ntohl()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define     g_ntohl(val)</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a 32-bit integer value from network to host byte order.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1271"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a 32-bit integer value in network byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1276"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to host byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1282"
+></A
+><H3
+><A
+NAME="G-NTOHS"
+></A
+>g_ntohs()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define     g_ntohs(val)</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a 16-bit integer value from network to host byte order.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1288"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a 16-bit integer value in network byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1293"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to host byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1299"
+></A
+><H3
+><A
+NAME="GINT-FROM-BE-CAPS"
+></A
+>GINT_FROM_BE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GINT_FROM_BE(val)	(GINT_TO_BE (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GINT"
+>gint</A
+> value from big-endian to host byte order.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1306"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GINT"
+>gint</A
+> value in big-endian byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1312"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to host byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1318"
+></A
+><H3
+><A
+NAME="GINT-FROM-LE-CAPS"
+></A
+>GINT_FROM_LE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GINT_FROM_LE(val)	(GINT_TO_LE (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GINT"
+>gint</A
+> value from little-endian to host byte order.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1325"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GINT"
+>gint</A
+> value in little-endian byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1331"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to host byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1337"
+></A
+><H3
+><A
+NAME="GINT-TO-BE-CAPS"
+></A
+>GINT_TO_BE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GINT_TO_BE(val)		((gint) GINT32_TO_BE (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GINT"
+>gint</A
+> value from host byte order to big-endian.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1344"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GINT"
+>gint</A
+> value in host byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1350"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to big-endian byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1356"
+></A
+><H3
+><A
+NAME="GINT-TO-LE-CAPS"
+></A
+>GINT_TO_LE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GINT_TO_LE(val)		((gint) GINT32_TO_LE (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GINT"
+>gint</A
+> value from host byte order to little-endian.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1363"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GINT"
+>gint</A
+> value in host byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1369"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to little-endian byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1375"
+></A
+><H3
+><A
+NAME="GUINT-FROM-BE-CAPS"
+></A
+>GUINT_FROM_BE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GUINT_FROM_BE(val)	(GUINT_TO_BE (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GUINT"
+>guint</A
+> value from big-endian to host byte order.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1382"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GUINT"
+>guint</A
+> value in big-endian byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1388"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to host byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1394"
+></A
+><H3
+><A
+NAME="GUINT-FROM-LE-CAPS"
+></A
+>GUINT_FROM_LE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GUINT_FROM_LE(val)	(GUINT_TO_LE (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GUINT"
+>guint</A
+> value from little-endian to host byte order.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1401"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GUINT"
+>guint</A
+> value in little-endian byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1407"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to host byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1413"
+></A
+><H3
+><A
+NAME="GUINT-TO-BE-CAPS"
+></A
+>GUINT_TO_BE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GUINT_TO_BE(val)	((guint) GUINT32_TO_BE (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GUINT"
+>guint</A
+> value from host byte order to big-endian.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1420"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GUINT"
+>guint</A
+> value in host byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1426"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to big-endian byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1432"
+></A
+><H3
+><A
+NAME="GUINT-TO-LE-CAPS"
+></A
+>GUINT_TO_LE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GUINT_TO_LE(val)	((guint) GUINT32_TO_LE (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GUINT"
+>guint</A
+> value from host byte order to little-endian.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1439"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GUINT"
+>guint</A
+> value in host byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1445"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to little-endian byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1451"
+></A
+><H3
+><A
+NAME="GLONG-FROM-BE-CAPS"
+></A
+>GLONG_FROM_BE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GLONG_FROM_BE(val)	(GLONG_TO_BE (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GLONG"
+>glong</A
+> value from big-endian to the host byte order.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1458"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GLONG"
+>glong</A
+> value in big-endian byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1464"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to host byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1470"
+></A
+><H3
+><A
+NAME="GLONG-FROM-LE-CAPS"
+></A
+>GLONG_FROM_LE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GLONG_FROM_LE(val)	(GLONG_TO_LE (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GLONG"
+>glong</A
+> value from little-endian to host byte order.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1477"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GLONG"
+>glong</A
+> value in little-endian byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1483"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to host byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1489"
+></A
+><H3
+><A
+NAME="GLONG-TO-BE-CAPS"
+></A
+>GLONG_TO_BE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GLONG_TO_BE(val)	((glong) GINT32_TO_BE (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GLONG"
+>glong</A
+> value from host byte order to big-endian.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1496"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GLONG"
+>glong</A
+> value in host byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1502"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to big-endian byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1508"
+></A
+><H3
+><A
+NAME="GLONG-TO-LE-CAPS"
+></A
+>GLONG_TO_LE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GLONG_TO_LE(val)	((glong) GINT32_TO_LE (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GLONG"
+>glong</A
+> value from host byte order to little-endian.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1515"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GLONG"
+>glong</A
+> value in host byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1521"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to little-endian.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1527"
+></A
+><H3
+><A
+NAME="GULONG-FROM-BE-CAPS"
+></A
+>GULONG_FROM_BE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GULONG_FROM_BE(val)	(GULONG_TO_BE (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GULONG"
+>gulong</A
+> value from big-endian to host byte order.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1534"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GULONG"
+>gulong</A
+> value in big-endian byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1540"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to host byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1546"
+></A
+><H3
+><A
+NAME="GULONG-FROM-LE-CAPS"
+></A
+>GULONG_FROM_LE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GULONG_FROM_LE(val)	(GULONG_TO_LE (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GULONG"
+>gulong</A
+> value from little-endian to host byte order.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1553"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GULONG"
+>gulong</A
+> value in little-endian byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1559"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to host byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1565"
+></A
+><H3
+><A
+NAME="GULONG-TO-BE-CAPS"
+></A
+>GULONG_TO_BE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GULONG_TO_BE(val)	((gulong) GUINT32_TO_BE (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GULONG"
+>gulong</A
+> value from host byte order to big-endian.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1572"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GULONG"
+>gulong</A
+> value in host byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1578"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to big-endian.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1584"
+></A
+><H3
+><A
+NAME="GULONG-TO-LE-CAPS"
+></A
+>GULONG_TO_LE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GULONG_TO_LE(val)	((gulong) GUINT32_TO_LE (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GULONG"
+>gulong</A
+> value from host byte order to little-endian.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1591"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GULONG"
+>gulong</A
+> value in host byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1597"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to little-endian.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1603"
+></A
+><H3
+><A
+NAME="GINT16-FROM-BE-CAPS"
+></A
+>GINT16_FROM_BE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GINT16_FROM_BE(val)	(GINT16_TO_BE (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GINT16"
+>gint16</A
+> value from big-endian to host byte order.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1610"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GINT16"
+>gint16</A
+> value in big-endian byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1616"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to host byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1622"
+></A
+><H3
+><A
+NAME="GINT16-FROM-LE-CAPS"
+></A
+>GINT16_FROM_LE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GINT16_FROM_LE(val)	(GINT16_TO_LE (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GINT16"
+>gint16</A
+> value from little-endian to host byte order.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1629"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GINT16"
+>gint16</A
+> value in little-endian byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1635"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to host byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1641"
+></A
+><H3
+><A
+NAME="GINT16-TO-BE-CAPS"
+></A
+>GINT16_TO_BE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GINT16_TO_BE(val)	((gint16) GUINT16_SWAP_LE_BE (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GINT16"
+>gint16</A
+> value from host byte order to big-endian.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1648"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GINT16"
+>gint16</A
+> value in host byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1654"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to big-endian.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1660"
+></A
+><H3
+><A
+NAME="GINT16-TO-LE-CAPS"
+></A
+>GINT16_TO_LE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GINT16_TO_LE(val)	((gint16) (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GINT16"
+>gint16</A
+> value from host byte order to little-endian.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1667"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GINT16"
+>gint16</A
+> value in host byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1673"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to little-endian.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1679"
+></A
+><H3
+><A
+NAME="GUINT16-FROM-BE-CAPS"
+></A
+>GUINT16_FROM_BE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GUINT16_FROM_BE(val)	(GUINT16_TO_BE (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GUINT16"
+>guint16</A
+> value from big-endian to host byte order.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1686"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GUINT16"
+>guint16</A
+> value in big-endian byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1692"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to host byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1698"
+></A
+><H3
+><A
+NAME="GUINT16-FROM-LE-CAPS"
+></A
+>GUINT16_FROM_LE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GUINT16_FROM_LE(val)	(GUINT16_TO_LE (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GUINT16"
+>guint16</A
+> value from little-endian to host byte order.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1705"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GUINT16"
+>guint16</A
+> value in little-endian byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1711"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to host byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1717"
+></A
+><H3
+><A
+NAME="GUINT16-TO-BE-CAPS"
+></A
+>GUINT16_TO_BE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GUINT16_TO_BE(val)	(GUINT16_SWAP_LE_BE (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GUINT16"
+>guint16</A
+> value from host byte order to big-endian.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1724"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GUINT16"
+>guint16</A
+> value in host byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1730"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to big-endian.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1736"
+></A
+><H3
+><A
+NAME="GUINT16-TO-LE-CAPS"
+></A
+>GUINT16_TO_LE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GUINT16_TO_LE(val)	((guint16) (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GUINT16"
+>guint16</A
+> value from host byte order to little-endian.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1743"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GUINT16"
+>guint16</A
+> value in host byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1749"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to little-endian.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1755"
+></A
+><H3
+><A
+NAME="GINT32-FROM-BE-CAPS"
+></A
+>GINT32_FROM_BE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GINT32_FROM_BE(val)	(GINT32_TO_BE (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GINT32"
+>gint32</A
+> value from big-endian to host byte order.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1762"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GINT32"
+>gint32</A
+> value in big-endian byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1768"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to host byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1774"
+></A
+><H3
+><A
+NAME="GINT32-FROM-LE-CAPS"
+></A
+>GINT32_FROM_LE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GINT32_FROM_LE(val)	(GINT32_TO_LE (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GINT32"
+>gint32</A
+> value from little-endian to host byte order.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1781"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GINT32"
+>gint32</A
+> value in little-endian byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1787"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to host byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1793"
+></A
+><H3
+><A
+NAME="GINT32-TO-BE-CAPS"
+></A
+>GINT32_TO_BE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GINT32_TO_BE(val)	((gint32) GUINT32_SWAP_LE_BE (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GINT32"
+>gint32</A
+> value from host byte order to big-endian.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1800"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GINT32"
+>gint32</A
+> value in host byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1806"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to big-endian.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1812"
+></A
+><H3
+><A
+NAME="GINT32-TO-LE-CAPS"
+></A
+>GINT32_TO_LE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GINT32_TO_LE(val)	((gint32) (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GINT32"
+>gint32</A
+> value from host byte order to little-endian.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1819"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GINT32"
+>gint32</A
+> value in host byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1825"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to little-endian.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1831"
+></A
+><H3
+><A
+NAME="GUINT32-FROM-BE-CAPS"
+></A
+>GUINT32_FROM_BE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GUINT32_FROM_BE(val)	(GUINT32_TO_BE (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GUINT32"
+>guint32</A
+> value from big-endian to host byte order.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1838"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GUINT32"
+>guint32</A
+> value in big-endian byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1844"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to host byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1850"
+></A
+><H3
+><A
+NAME="GUINT32-FROM-LE-CAPS"
+></A
+>GUINT32_FROM_LE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GUINT32_FROM_LE(val)	(GUINT32_TO_LE (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GUINT32"
+>guint32</A
+> value from little-endian to host byte order.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1857"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GUINT32"
+>guint32</A
+> value in little-endian byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1863"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to host byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1869"
+></A
+><H3
+><A
+NAME="GUINT32-TO-BE-CAPS"
+></A
+>GUINT32_TO_BE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GUINT32_TO_BE(val)	(GUINT32_SWAP_LE_BE (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GUINT32"
+>guint32</A
+> value from host byte order to big-endian.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1876"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GUINT32"
+>guint32</A
+> value in host byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1882"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to big-endian.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1888"
+></A
+><H3
+><A
+NAME="GUINT32-TO-LE-CAPS"
+></A
+>GUINT32_TO_LE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GUINT32_TO_LE(val)	((guint32) (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GUINT32"
+>guint32</A
+> value from host byte order to little-endian.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1895"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GUINT32"
+>guint32</A
+> value in host byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1901"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to little-endian.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1907"
+></A
+><H3
+><A
+NAME="GINT64-FROM-BE-CAPS"
+></A
+>GINT64_FROM_BE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GINT64_FROM_BE(val)	(GINT64_TO_BE (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GINT64"
+>gint64</A
+> value from big-endian to host byte order.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1914"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GINT64"
+>gint64</A
+> value in big-endian byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1920"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to host byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1926"
+></A
+><H3
+><A
+NAME="GINT64-FROM-LE-CAPS"
+></A
+>GINT64_FROM_LE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GINT64_FROM_LE(val)	(GINT64_TO_LE (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GINT64"
+>gint64</A
+> value from little-endian to host byte order.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1933"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GINT64"
+>gint64</A
+> value in little-endian byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1939"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to host byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1945"
+></A
+><H3
+><A
+NAME="GINT64-TO-BE-CAPS"
+></A
+>GINT64_TO_BE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GINT64_TO_BE(val)	((gint64) GUINT64_SWAP_LE_BE (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GINT64"
+>gint64</A
+> value from host byte order to big-endian.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1952"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GINT64"
+>gint64</A
+> value in host byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1958"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to big-endian.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1964"
+></A
+><H3
+><A
+NAME="GINT64-TO-LE-CAPS"
+></A
+>GINT64_TO_LE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GINT64_TO_LE(val)	((gint64) (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GINT64"
+>gint64</A
+> value from host byte order to little-endian.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1971"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GINT64"
+>gint64</A
+> value in host byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1977"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to little-endian.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN1983"
+></A
+><H3
+><A
+NAME="GUINT64-FROM-BE-CAPS"
+></A
+>GUINT64_FROM_BE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GUINT64_FROM_BE(val)	(GUINT64_TO_BE (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GUINT64"
+>guint64</A
+> value from big-endian to host byte order.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1990"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GUINT64"
+>guint64</A
+> value in big-endian byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN1996"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to host byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN2002"
+></A
+><H3
+><A
+NAME="GUINT64-FROM-LE-CAPS"
+></A
+>GUINT64_FROM_LE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GUINT64_FROM_LE(val)	(GUINT64_TO_LE (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GUINT64"
+>guint64</A
+> value from little-endian to host byte order.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN2009"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GUINT64"
+>guint64</A
+> value in little-endian byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN2015"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to host byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN2021"
+></A
+><H3
+><A
+NAME="GUINT64-TO-BE-CAPS"
+></A
+>GUINT64_TO_BE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GUINT64_TO_BE(val)	(GUINT64_SWAP_LE_BE (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GUINT64"
+>guint64</A
+> value from host byte order to big-endian.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN2028"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GUINT64"
+>guint64</A
+> value in host byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN2034"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to big-endian.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN2040"
+></A
+><H3
+><A
+NAME="GUINT64-TO-LE-CAPS"
+></A
+>GUINT64_TO_LE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GUINT64_TO_LE(val)	((guint64) (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GUINT64"
+>guint64</A
+> value from host byte order to little-endian.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN2047"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GUINT64"
+>guint64</A
+> value in host byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN2053"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to little-endian.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN2059"
+></A
+><H3
+><A
+NAME="GUINT16-SWAP-BE-PDP-CAPS"
+></A
+>GUINT16_SWAP_BE_PDP()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GUINT16_SWAP_BE_PDP(val)	(GUINT16_SWAP_LE_BE (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GUINT16"
+>guint16</A
+> value between big-endian and pdp-endian byte order.
+The conversion is symmetric so it can be used both ways.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN2066"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GUINT16"
+>guint16</A
+> value in big-endian or pdp-endian byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN2072"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to the opposite byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN2078"
+></A
+><H3
+><A
+NAME="GUINT16-SWAP-LE-BE-CAPS"
+></A
+>GUINT16_SWAP_LE_BE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define     GUINT16_SWAP_LE_BE(val)</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GUINT16"
+>guint16</A
+> value between little-endian and big-endian byte order.
+The conversion is symmetric so it can be used both ways.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN2085"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GUINT16"
+>guint16</A
+> value in little-endian or big-endian byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN2091"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to the opposite byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN2097"
+></A
+><H3
+><A
+NAME="GUINT16-SWAP-LE-PDP-CAPS"
+></A
+>GUINT16_SWAP_LE_PDP()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GUINT16_SWAP_LE_PDP(val)	((guint16) (val))</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GUINT16"
+>guint16</A
+> value between little-endian and pdp-endian byte order.
+The conversion is symmetric so it can be used both ways.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN2104"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GUINT16"
+>guint16</A
+> value in little-endian or pdp-endian byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN2110"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to the opposite byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN2116"
+></A
+><H3
+><A
+NAME="GUINT32-SWAP-BE-PDP-CAPS"
+></A
+>GUINT32_SWAP_BE_PDP()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define     GUINT32_SWAP_BE_PDP(val)</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GUINT32"
+>guint32</A
+> value between big-endian and pdp-endian byte order.
+The conversion is symmetric so it can be used both ways.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN2123"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GUINT32"
+>guint32</A
+> value in big-endian or pdp-endian byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN2129"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to the opposite byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN2135"
+></A
+><H3
+><A
+NAME="GUINT32-SWAP-LE-BE-CAPS"
+></A
+>GUINT32_SWAP_LE_BE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define     GUINT32_SWAP_LE_BE(val)</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GUINT32"
+>guint32</A
+> value between little-endian and big-endian byte order.
+The conversion is symmetric so it can be used both ways.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN2142"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GUINT32"
+>guint32</A
+> value in little-endian or big-endian byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN2148"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to the opposite byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN2154"
+></A
+><H3
+><A
+NAME="GUINT32-SWAP-LE-PDP-CAPS"
+></A
+>GUINT32_SWAP_LE_PDP()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define     GUINT32_SWAP_LE_PDP(val)</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GUINT32"
+>guint32</A
+> value between little-endian and pdp-endian byte order.
+The conversion is symmetric so it can be used both ways.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN2161"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GUINT32"
+>guint32</A
+> value in little-endian or pdp-endian byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN2167"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to the opposite byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN2173"
+></A
+><H3
+><A
+NAME="GUINT64-SWAP-LE-BE-CAPS"
+></A
+>GUINT64_SWAP_LE_BE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define     GUINT64_SWAP_LE_BE(val)</PRE
+></TD
+></TR
+></TABLE
+><P
+>Converts a <A
+HREF="glib-basic-types.html#GUINT64"
+>guint64</A
+> value between little-endian and big-endian byte order.
+The conversion is symmetric so it can be used both ways.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN2180"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-basic-types.html#GUINT64"
+>guint64</A
+> value in little-endian or big-endian byte order.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN2186"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+><TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+> converted to the opposite byte order.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><BR
+CLEAR="all"><BR><TABLE
+WIDTH="100%"
+BORDER="0"
+BGCOLOR="#000000"
+CELLPADDING="1"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="left"
+><A
+HREF="glib-type-conversion-macros.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>&#60;&#60;&#60; Previous Page</B
+></FONT
+></A
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="center"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+><A
+HREF="index.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Home</B
+></FONT
+></A
+></B
+></FONT
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="center"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+><A
+HREF="glib-fundamentals.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Up</B
+></FONT
+></A
+></B
+></FONT
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="right"
+><A
+HREF="glib-numerical-definitions.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Next Page &#62;&#62;&#62;</B
+></FONT
+></A
+></TD
+></TR
+><TR
+><TD
+COLSPAN="2"
+ALIGN="left"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Type Conversion Macros</B
+></FONT
+></TD
+><TD
+COLSPAN="2"
+ALIGN="right"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Numerical Definitions</B
+></FONT
+></TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

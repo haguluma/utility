@@ -1,0 +1,1673 @@
+<HTML
+><HEAD
+><TITLE
+>Caches</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE="GLib Reference Manual"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="GLib Data Types"
+HREF="glib-data-types.html"><LINK
+REL="PREVIOUS"
+TITLE="Relations and Tuples"
+HREF="glib-relations-and-tuples.html"><LINK
+REL="NEXT"
+TITLE="Memory Allocators"
+HREF="glib-memory-allocators.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+BGCOLOR="#000000"
+CELLPADDING="1"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="4"
+ALIGN="center"
+><FONT
+COLOR="#FFFFFF"
+SIZE="5"
+>GLib Reference Manual</FONT
+></TH
+></TR
+><TR
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="left"
+><A
+HREF="glib-relations-and-tuples.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>&#60;&#60;&#60; Previous Page</B
+></FONT
+></A
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="center"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+><A
+HREF="index.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Home</B
+></FONT
+></A
+></B
+></FONT
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="center"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+><A
+HREF="glib-data-types.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Up</B
+></FONT
+></A
+></B
+></FONT
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="right"
+><A
+HREF="glib-memory-allocators.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Next Page &#62;&#62;&#62;</B
+></FONT
+></A
+></TD
+></TR
+></TABLE
+></DIV
+><H1
+><A
+NAME="GLIB-CACHES">Caches</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN32226"
+></A
+><H2
+>Name</H2
+>Caches&nbsp;--&nbsp;caches allow sharing of complex data structures to save resources.</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN32229"><H2
+>Synopsis</H2
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="SYNOPSIS"
+>&#13;#include &lt;glib.h&gt;
+
+
+struct      <A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+>;
+<A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+>*     <A
+HREF="glib-caches.html#G-CACHE-NEW"
+>g_cache_new</A
+>                     (<A
+HREF="glib-caches.html#GCACHENEWFUNC"
+>GCacheNewFunc</A
+> value_new_func,
+                                             <A
+HREF="glib-caches.html#GCACHEDESTROYFUNC"
+>GCacheDestroyFunc</A
+> value_destroy_func,
+                                             <A
+HREF="glib-caches.html#GCACHEDUPFUNC"
+>GCacheDupFunc</A
+> key_dup_func,
+                                             <A
+HREF="glib-caches.html#GCACHEDESTROYFUNC"
+>GCacheDestroyFunc</A
+> key_destroy_func,
+                                             <A
+HREF="glib-hash-tables.html#GHASHFUNC"
+>GHashFunc</A
+> hash_key_func,
+                                             <A
+HREF="glib-hash-tables.html#GHASHFUNC"
+>GHashFunc</A
+> hash_value_func,
+                                             <A
+HREF="glib-hash-tables.html#GEQUALFUNC"
+>GEqualFunc</A
+> key_equal_func);
+<A
+HREF="glib-basic-types.html#GPOINTER"
+>gpointer</A
+>    <A
+HREF="glib-caches.html#G-CACHE-INSERT"
+>g_cache_insert</A
+>                  (<A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+> *cache,
+                                             <A
+HREF="glib-basic-types.html#GPOINTER"
+>gpointer</A
+> key);
+void        <A
+HREF="glib-caches.html#G-CACHE-REMOVE"
+>g_cache_remove</A
+>                  (<A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+> *cache,
+                                             <A
+HREF="glib-basic-types.html#GCONSTPOINTER"
+>gconstpointer</A
+> value);
+void        <A
+HREF="glib-caches.html#G-CACHE-DESTROY"
+>g_cache_destroy</A
+>                 (<A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+> *cache);
+
+void        <A
+HREF="glib-caches.html#G-CACHE-KEY-FOREACH"
+>g_cache_key_foreach</A
+>             (<A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+> *cache,
+                                             <A
+HREF="glib-hash-tables.html#GHFUNC"
+>GHFunc</A
+> func,
+                                             <A
+HREF="glib-basic-types.html#GPOINTER"
+>gpointer</A
+> user_data);
+void        <A
+HREF="glib-caches.html#G-CACHE-VALUE-FOREACH"
+>g_cache_value_foreach</A
+>           (<A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+> *cache,
+                                             <A
+HREF="glib-hash-tables.html#GHFUNC"
+>GHFunc</A
+> func,
+                                             <A
+HREF="glib-basic-types.html#GPOINTER"
+>gpointer</A
+> user_data);
+
+void        (<A
+HREF="glib-caches.html#GCACHEDESTROYFUNC"
+>*GCacheDestroyFunc</A
+>)            (<A
+HREF="glib-basic-types.html#GPOINTER"
+>gpointer</A
+> value);
+<A
+HREF="glib-basic-types.html#GPOINTER"
+>gpointer</A
+>    (<A
+HREF="glib-caches.html#GCACHEDUPFUNC"
+>*GCacheDupFunc</A
+>)                (<A
+HREF="glib-basic-types.html#GPOINTER"
+>gpointer</A
+> value);
+<A
+HREF="glib-basic-types.html#GPOINTER"
+>gpointer</A
+>    (<A
+HREF="glib-caches.html#GCACHENEWFUNC"
+>*GCacheNewFunc</A
+>)                (<A
+HREF="glib-basic-types.html#GPOINTER"
+>gpointer</A
+> key);</PRE
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN32267"
+></A
+><H2
+>Description</H2
+><P
+>A <A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+> allows sharing of complex data structures, in order to save
+system resources.</P
+><P
+>GTK+ uses caches for GtkStyles and GdkGCs. These consume a lot of
+resources, so a <A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+> is used to see if a GtkStyle or GdkGC with the
+required properties already exists. If it does, then the existing
+object is used instead of creating a new one.</P
+><P
+><A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+> uses keys and values.
+A <A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+> key describes the properties of a particular resource.
+A <A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+> value is the actual resource.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN32281"
+></A
+><H2
+>Details</H2
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN32283"
+></A
+><H3
+><A
+NAME="GCACHE"
+></A
+>struct GCache</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>struct GCache;</PRE
+></TD
+></TR
+></TABLE
+><P
+>The <A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+> struct is an opaque data structure containing information about
+a <A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+>. It should only be accessed via the following functions.</P
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN32290"
+></A
+><H3
+><A
+NAME="G-CACHE-NEW"
+></A
+>g_cache_new ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+>*     g_cache_new                     (<A
+HREF="glib-caches.html#GCACHENEWFUNC"
+>GCacheNewFunc</A
+> value_new_func,
+                                             <A
+HREF="glib-caches.html#GCACHEDESTROYFUNC"
+>GCacheDestroyFunc</A
+> value_destroy_func,
+                                             <A
+HREF="glib-caches.html#GCACHEDUPFUNC"
+>GCacheDupFunc</A
+> key_dup_func,
+                                             <A
+HREF="glib-caches.html#GCACHEDESTROYFUNC"
+>GCacheDestroyFunc</A
+> key_destroy_func,
+                                             <A
+HREF="glib-hash-tables.html#GHASHFUNC"
+>GHashFunc</A
+> hash_key_func,
+                                             <A
+HREF="glib-hash-tables.html#GHASHFUNC"
+>GHashFunc</A
+> hash_value_func,
+                                             <A
+HREF="glib-hash-tables.html#GEQUALFUNC"
+>GEqualFunc</A
+> key_equal_func);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Creates a new <A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+>.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN32305"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>value_new_func</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a function to create a new object given a key.
+This is called by <A
+HREF="glib-caches.html#G-CACHE-INSERT"
+>g_cache_insert</A
+>() if an object with the given key
+does not already exist.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN32311"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>value_destroy_func</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a function to destroy an object. It is
+called by <A
+HREF="glib-caches.html#G-CACHE-REMOVE"
+>g_cache_remove</A
+>() when the object is no longer needed (i.e. its
+reference count drops to 0).</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN32317"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>key_dup_func</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a function to copy a key. It is called by
+<A
+HREF="glib-caches.html#G-CACHE-INSERT"
+>g_cache_insert</A
+>() if the key does not already exist in the <A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+>.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN32324"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>key_destroy_func</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a function to destroy a key. It is
+called by <A
+HREF="glib-caches.html#G-CACHE-REMOVE"
+>g_cache_remove</A
+>() when the object is no longer needed (i.e. its
+reference count drops to 0).</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN32330"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>hash_key_func</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a function to create a hash value from a key.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN32335"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>hash_value_func</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a function to create a hash value from a value.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN32340"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>key_equal_func</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a function to compare two keys. It should return <TT
+CLASS="LITERAL"
+>TRUE</TT
+> if
+the two keys are equivalent.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN32346"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a new <A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+>.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN32352"
+></A
+><H3
+><A
+NAME="G-CACHE-INSERT"
+></A
+>g_cache_insert ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="glib-basic-types.html#GPOINTER"
+>gpointer</A
+>    g_cache_insert                  (<A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+> *cache,
+                                             <A
+HREF="glib-basic-types.html#GPOINTER"
+>gpointer</A
+> key);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Gets the value corresponding to the given key, creating it if necessary.
+It first checks if the value already exists in the <A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+>, by using
+the <TT
+CLASS="PARAMETER"
+><I
+>key_equal_func</I
+></TT
+> function passed to <A
+HREF="glib-caches.html#G-CACHE-NEW"
+>g_cache_new</A
+>().
+If it does already exist it is returned, and its reference count is increased
+by one.
+If the value does not currently exist, if is created by calling the
+<TT
+CLASS="PARAMETER"
+><I
+>value_new_func</I
+></TT
+>. The key is duplicated by calling
+<TT
+CLASS="PARAMETER"
+><I
+>key_dup_func</I
+></TT
+> and the duplicated key and value are inserted
+into the <A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+>.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN32367"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>cache</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+>.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN32373"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>key</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a key describing a <A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+> object.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN32379"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a pointer to a <A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+> value.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN32385"
+></A
+><H3
+><A
+NAME="G-CACHE-REMOVE"
+></A
+>g_cache_remove ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>void        g_cache_remove                  (<A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+> *cache,
+                                             <A
+HREF="glib-basic-types.html#GCONSTPOINTER"
+>gconstpointer</A
+> value);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Decreases the reference count of the given value.
+If it drops to 0 then the value and its corresponding key are destroyed,
+using the <TT
+CLASS="PARAMETER"
+><I
+>value_destroy_func</I
+></TT
+> and <TT
+CLASS="PARAMETER"
+><I
+>key_destroy_func</I
+></TT
+> passed to <A
+HREF="glib-caches.html#G-CACHE-NEW"
+>g_cache_new</A
+>().</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN32396"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>cache</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+>.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN32402"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>value</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>the value to remove.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN32407"
+></A
+><H3
+><A
+NAME="G-CACHE-DESTROY"
+></A
+>g_cache_destroy ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>void        g_cache_destroy                 (<A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+> *cache);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Frees the memory allocated for the <A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+>.</P
+><P
+>Note that it does not destroy the keys and values which were contained in the
+<A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+>.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN32417"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>cache</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+>.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN32423"
+></A
+><H3
+><A
+NAME="G-CACHE-KEY-FOREACH"
+></A
+>g_cache_key_foreach ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>void        g_cache_key_foreach             (<A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+> *cache,
+                                             <A
+HREF="glib-hash-tables.html#GHFUNC"
+>GHFunc</A
+> func,
+                                             <A
+HREF="glib-basic-types.html#GPOINTER"
+>gpointer</A
+> user_data);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Calls the given function for each of the keys in the <A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+>.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN32433"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>cache</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+>.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN32439"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>func</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>the function to call with each <A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+> key.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN32445"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>user_data</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>user data to pass to the function.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN32450"
+></A
+><H3
+><A
+NAME="G-CACHE-VALUE-FOREACH"
+></A
+>g_cache_value_foreach ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>void        g_cache_value_foreach           (<A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+> *cache,
+                                             <A
+HREF="glib-hash-tables.html#GHFUNC"
+>GHFunc</A
+> func,
+                                             <A
+HREF="glib-basic-types.html#GPOINTER"
+>gpointer</A
+> user_data);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Calls the given function for each of the values in the <A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+>.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN32460"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>cache</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+>.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN32466"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>func</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>the function to call with each <A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+> value.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN32472"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>user_data</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>user data to pass to the function.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN32477"
+></A
+><H3
+><A
+NAME="GCACHEDESTROYFUNC"
+></A
+>GCacheDestroyFunc ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>void        (*GCacheDestroyFunc)            (<A
+HREF="glib-basic-types.html#GPOINTER"
+>gpointer</A
+> value);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Specifies the type of the <TT
+CLASS="PARAMETER"
+><I
+>value_destroy_func</I
+></TT
+> and <TT
+CLASS="PARAMETER"
+><I
+>key_destroy_func</I
+></TT
+> functions
+passed to <A
+HREF="glib-caches.html#G-CACHE-NEW"
+>g_cache_new</A
+>().
+The functions are passed a pointer to the <A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+> key or <A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+> value and
+should free any memory and other resources associated with it.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN32489"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>value</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>the <A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+> value to destroy.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN32495"
+></A
+><H3
+><A
+NAME="GCACHEDUPFUNC"
+></A
+>GCacheDupFunc ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="glib-basic-types.html#GPOINTER"
+>gpointer</A
+>    (*GCacheDupFunc)                (<A
+HREF="glib-basic-types.html#GPOINTER"
+>gpointer</A
+> value);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Specifies the type of the <TT
+CLASS="PARAMETER"
+><I
+>key_dup_func</I
+></TT
+> function passed to <A
+HREF="glib-caches.html#G-CACHE-NEW"
+>g_cache_new</A
+>().
+The function is passed a key (<SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>not</I
+></SPAN
+> a value as the prototype implies) and
+should return a duplicate of the key.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN32506"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>value</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>the <A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+> key to destroy (<SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>not</I
+></SPAN
+> a <A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+> value as it seems).</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN32514"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a copy of the <A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+> key.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN32520"
+></A
+><H3
+><A
+NAME="GCACHENEWFUNC"
+></A
+>GCacheNewFunc ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E8E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="glib-basic-types.html#GPOINTER"
+>gpointer</A
+>    (*GCacheNewFunc)                (<A
+HREF="glib-basic-types.html#GPOINTER"
+>gpointer</A
+> key);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Specifies the type of the <TT
+CLASS="PARAMETER"
+><I
+>value_new_func</I
+></TT
+> function passed to <A
+HREF="glib-caches.html#G-CACHE-NEW"
+>g_cache_new</A
+>().
+It is passed a <A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+> key and should create the value corresponding to the
+key.</P
+><P
+></P
+><TABLE
+CLASS="VARIABLELIST"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="4"
+WIDTH="100%"
+BGCOLOR="#F0F0D0"
+><TBODY
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN32531"><SPAN
+STYLE="white-space: nowrap"
+><TT
+CLASS="PARAMETER"
+><I
+>key</I
+></TT
+>&nbsp;:</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a <A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+> key.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="20%"
+><A
+NAME="AEN32537"><SPAN
+STYLE="white-space: nowrap"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="80%"
+><P
+>a new <A
+HREF="glib-caches.html#GCACHE"
+>GCache</A
+> value corresponding to the key.
+&#13;</P
+></TD
+></TR
+></TBODY
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><BR
+CLEAR="all"><BR><TABLE
+WIDTH="100%"
+BORDER="0"
+BGCOLOR="#000000"
+CELLPADDING="1"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="left"
+><A
+HREF="glib-relations-and-tuples.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>&#60;&#60;&#60; Previous Page</B
+></FONT
+></A
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="center"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+><A
+HREF="index.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Home</B
+></FONT
+></A
+></B
+></FONT
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="center"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+><A
+HREF="glib-data-types.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Up</B
+></FONT
+></A
+></B
+></FONT
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="right"
+><A
+HREF="glib-memory-allocators.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Next Page &#62;&#62;&#62;</B
+></FONT
+></A
+></TD
+></TR
+><TR
+><TD
+COLSPAN="2"
+ALIGN="left"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Relations and Tuples</B
+></FONT
+></TD
+><TD
+COLSPAN="2"
+ALIGN="right"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Memory Allocators</B
+></FONT
+></TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
