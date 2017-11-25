@@ -1,0 +1,2 @@
+killall bash
+killall python

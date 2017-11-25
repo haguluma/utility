@@ -1,0 +1,11 @@
+sending proc connector: PROC_CN_MCAST_LISTEN... sent
+Reading process events from proc connector.
+Hit Ctrl-C to exit
+Failed to open file '/proc/13470/cmdline': No such file or directory: No such file or directoryFError reading file '/proc/14829/cmdline': No such process: No such process
+Failed to open file '/proc/15129/cmdline': No such file or directory: No such file or directory
+Failed to open file '/proc/15144/cmdline': No such file or directory: No such file or directory
+Failed to open file '/proc/17302/cmdline': No such file or directory: No such file or directory
+h file or directory
+Error reading file '/proc/14474/status': No such process: No such process
+exec : echo 9733 > /sys/fs/cgroup/memory/memory_ctl/tasks
+exec : echo 13430 > /sys/fs/cgroup/memory/memory_ctl/tasks
