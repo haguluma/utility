@@ -215,13 +215,6 @@ void handle_msg (struct cn_msg *cn_hdr)
   /* print the message */
   ev = (struct proc_event*)cn_hdr->data;
 
-  /*
-  code = strtok(search_cmd, " ");
-  printf("code:%s\n",code);
-                                                                                                                                                                                                                                                                                                                                                                                                                                     op1 = strtok(NULL, " ");                                                                                                                                                                                                                                                                                                                                                                                                               
-  op2 = strtok(NULL, " ");*/
-  //printf("code:%s\nop1:%s\nop2:%s\n",code,op1,op2);    
-  
   /* uninteresting event, bail out */
   if ((show_event & ev->what) == 0) return;
 
@@ -256,6 +249,7 @@ void handle_msg (struct cn_msg *cn_hdr)
     snprintf(pcid, 10, "%d", ev->event_data.fork.parent_pid);
     strcat(command, pcid);
     strcat(command, " > /sys/fs/cgroup/memory/memory_ctl/tasks");
+    //strcat(command, " | tee /sys/fs/cgroup/memory/memory_ctl/tasks /sys/fs/cgroup/cpu/cpu_ctl/tasks > /dev/null");
     /*
     printf("cmdline : %s\n-----------\n",proc_cmdline);  
     while(proc_cmdline[i]){
@@ -272,7 +266,7 @@ void handle_msg (struct cn_msg *cn_hdr)
     printf("bool : %d\n",strncmp(search_cmd,proc_cmdline,100));
     printf("\n-----\n");
     */
-    if(strncmp(search_cmd,proc_cmdline,100) == 0){
+    if(strncmp(search_cmd,proc_cmdline,60) == 0){
       printf("exec : %s\n",command);
       system(command);
       }
