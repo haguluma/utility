@@ -4,7 +4,7 @@ echo $conf_file
 
 /opt/spark-bench/bin/spark-bench.sh $conf_file
 
-bash getlog.sh
+./sp_bench/getlog.sh
 
 
 

@@ -1,2 +1,2 @@
-killall bash
+killall mv_proc
 killall python
