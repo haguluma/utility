@@ -1,5 +1,6 @@
 while true; do
-   echo 0 | sudo tee /sys/fs/cgroup/cpu,cpuacct/testcg/cpuacct.usage >/dev/null
+   echo 0 > /sys/fs/cgroup/cpu/cpu_ctl/cpuacct.usage
    sleep 1
-   echo "$(date): $(($(cat /sys/fs/cgroup/cpu,cpuacct/testcg/cpuacct.usage) / 1000000 ))" # ミリ秒に直す
- done 
+   echo "$(date +%M.%S.%N | sed -e 's/\./ /g' | gawk '{print $1*60000000000+$2*1000000000+$3}'):$(cat /sys/fs/cgroup/cpu/cpu_ctl/cpuacct.usage)"
+done
+
