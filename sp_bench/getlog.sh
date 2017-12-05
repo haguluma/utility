@@ -3,5 +3,6 @@ filename=$(basename $exelog)
 
 hdfs dfs -get $exelog ~/utility/EXElogs
 cp -r /opt/spark/work/$filename ~/utility/GClogs
+cp -r ~/utility/Cglog ~/utility/GClogs/$filename/
 
 echo $filename
